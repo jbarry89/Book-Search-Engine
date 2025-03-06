@@ -19,7 +19,7 @@ export const resolvers = {
         throw new AuthenticationError('Incorrect credentials');
       }
 
-      const token = signToken(user);
+      const token = signToken(user.username, user.email, user._id);
       return { token, user };
     },
     addUser: async (
@@ -27,7 +27,7 @@ export const resolvers = {
       { username, email, password }: { username: string; email: string; password: string }
     ) => {
       const user = await User.create({ username, email, password });
-      const token = signToken(user);
+      const token = signToken(user.username, user.email, user._id);
       return { token, user };
     },
     saveBook: async (
