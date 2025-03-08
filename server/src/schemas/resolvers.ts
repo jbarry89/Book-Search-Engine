@@ -2,7 +2,7 @@ import { AuthenticationError } from 'apollo-server-express';
 import User from '../models/User';
 import { signToken } from '../services/auth';
 
-export const resolvers = {
+const resolvers = {
   Query: {
     me: async (_parent: any, _args: any, context: any) => {
       if (context.user) {
@@ -58,3 +58,5 @@ export const resolvers = {
     },
   },
 };
+
+export default resolvers;
