@@ -30,9 +30,8 @@
   ## Usage 
   Here is an example screenshot of the Book Search Engine App:
 
-  [Book Search Engine Video Link](https://drive.google.com/file/d/11lz0aN8M1X2KVM1HLJmSlTd6qU3au1YF/view)
 
-  ![Book Search Engine screenshot](./src/assets/social-network-api-insomnia-screenshot.jpg)
+  ![Book Search Engine screenshot](./assets/google-book-search-engine-screenshot.jpg)
 
   
   ## Contributing
@@ -52,16 +51,17 @@
   npm install
 
   ```
+  
+  ```bash
+  npm run build
+
+  ```
 
   ```bash
   npm run seed
 
   ```
 
-  ```bash
-  npm run build
-
-  ```
 
   Run the Application: 
 
