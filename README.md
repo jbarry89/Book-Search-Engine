@@ -51,7 +51,7 @@
   npm install
 
   ```
-  
+
   ```bash
   npm run build
 
@@ -62,11 +62,11 @@
 
   ```
 
-
+s
   Run the Application: 
 
   ``` bash 
-  npm run start
+  npm run dev
 
   ``` 
 
