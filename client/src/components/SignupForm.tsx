@@ -2,9 +2,7 @@ import { useState } from 'react';
 import type { ChangeEvent, FormEvent } from 'react';
 import { Form, Button, Alert } from 'react-bootstrap';
 import { useMutation } from '@apollo/client';
-// import { createUser } from '../utils/API';
 import Auth from '../utils/auth';
-// import type { User } from '../models/User';
 import { ADD_USER } from '../utils/mutations';
 
 // biome-ignore lint/correctness/noEmptyPattern: <explanation>
@@ -40,22 +38,11 @@ const SignupForm = ({handleModalClose}: { handleModalClose: () => void }) => {
     }
 
     try {
-      // const response = await createUser(userFormData);
-
-      // if (!response.ok) {
-      //   throw new Error('something went wrong!');
-      // }
-
-      // const { token } = await response.json();
-      // Auth.login(token);
-
       const { username, email, password } = userFormData;
       
       const { data } = await addUser({
         variables: {username, email, password },
       });
-
-      console.log('Received token:', data.addUser.token);    // Remove this when done
 
       if (data?.addUser?.token) {
         setShowAlert(false);  // Hide Alert when user successfully signed up
