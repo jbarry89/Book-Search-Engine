@@ -1,6 +1,6 @@
 import { AuthenticationError } from 'apollo-server-express';
-import User from '../models/User';
-import { signToken } from '../services/auth';
+import User from '../models/User.js';
+import { signToken } from '../services/auth.js';
 
 const resolvers = {
   Query: {
@@ -13,7 +13,7 @@ const resolvers = {
   },
   Mutation: {
     login: async (_parent: any, { email, password }: { email: string; password: string }) => {
-      const user = await User.findOne({ email });
+      const user = await User.findOne({ email });  
 
       if (!user || !(await user.isCorrectPassword(password))) {
         throw new AuthenticationError('Incorrect credentials');
@@ -26,9 +26,17 @@ const resolvers = {
       _parent: any,
       { username, email, password }: { username: string; email: string; password: string }
     ) => {
-      const user = await User.create({ username, email, password });
-      const token = signToken(user.username, user.email, user._id);
-      return { token, user };
+
+      // Check if the user already exists
+      const existingUser = await User.findOne({ username });
+
+      if (existingUser) {
+        throw new Error("Username already taken. Please choose another.");
+      }
+
+      const newUser = await User.create({ username, email, password });
+      const token = signToken(newUser.username, newUser.email, newUser._id);
+      return { token, user: newUser };
     },
     saveBook: async (
       _parent: any,
