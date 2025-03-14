@@ -8,7 +8,7 @@
     "build": "tsc",
     "start": "npm run build && node dist/server.js",
     "seed": "node dist/seeds/seedUsers.js",
-    "watch": "nodemon --ext ts --exec 'npm run build && node dist/server.js'",
+    "watch": "nodemon --exec 'npm run build && node dist/server.js' --ext ts",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "keywords": [],
