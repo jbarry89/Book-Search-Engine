@@ -42,6 +42,12 @@ const startApolloServer = async () => {
     app.get('*', (_req: Request, res: Response) => {
       res.sendFile(path.join(__dirname, '../client/dist/index.html'));
     });
+  } else {
+    // Optionally, serve the client build during development (if using `npm run dev`)
+    app.use(express.static(path.join(__dirname, '../client/dist')));
+    app.get('*', (_req: Request, res: Response) => {
+      res.sendFile(path.join(__dirname, '../client/dist/index.html'));
+    });
   }
 
   app.listen(PORT, '0.0.0.0', () => {
